@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- LOGO -->
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/logo_mobilin"
+            android:contentDescription="Logo" />
+
+        <!-- CARD BIRU -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_login_card"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- JUDUL -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="DAFTAR"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <!-- USERNAME -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/bg_input"
+                android:hint="Masukkan username anda"
+                android:padding="12dp" />
+
+            <!-- EMAIL -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/bg_input"
+                android:hint="Masukkan email anda"
+                android:inputType="textEmailAddress"
+                android:padding="12dp" />
+
+            <!-- PASSWORD -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kata Sandi"
+                android:layout_marginBottom="15dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input"
+                android:hint="Masukkan kata sandi anda"
+                android:layout_marginBottom="25dp"
+                android:inputType="textPassword"
+                android:padding="12dp" />
+
+            <!-- KONFIRMASI PASSWORD -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Konfirmasi Kata Sandi"
+                android:layout_marginBottom="15dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input"
+                android:hint="Masukkan konfirmasi kata sandi anda"
+                android:inputType="textPassword"
+                android:padding="12dp" />
+
+            <!-- BUTTON REGISTER -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:text="DAFTAR"
+                android:textColor="#0F466E"
+                android:textStyle="bold"
+                app:backgroundTint="@android:color/white"
+                app:cornerRadius="12dp" />
+
+            <!-- LOGIN -->
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="Sudah punya akun? Masuk"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

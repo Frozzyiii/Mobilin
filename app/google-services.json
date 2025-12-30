@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "304051036130",
+    "project_id": "mobilin-8bd80",
+    "storage_bucket": "mobilin-8bd80.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304051036130:android:85ea114274d6a874b6a3bb",
+        "android_client_info": {
+          "package_name": "com.abel.mobilin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9gnZy__tzY6qXUCQCBuSpG1JtzyKyg4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

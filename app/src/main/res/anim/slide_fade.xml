@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+
+    <!-- 1. Dari kiri ke kanan -->
+    <translate
+        android:fromXDelta="-200%"
+        android:toXDelta="50%"
+        android:duration="1000"/>
+
+    <!-- 2. Dari kanan ke tengah -->
+    <translate
+        android:fromXDelta="50%"
+        android:toXDelta="-50%"
+        android:duration="1000"
+        android:startOffset="1000"/>
+</set>
