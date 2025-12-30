@@ -2,12 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.abel.mobilin">
 
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-=======
->>>>>>> 6a9a5b3 (first commit)
     <application
         android:allowBackup="true"
         android:icon="@drawable/mobilin"
@@ -16,12 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjekAkhirRentalMobil">
 
+        <!-- Splash / Launcher -->
         <activity
-<<<<<<< HEAD
             android:name="com.abel.mobilin.Landing.SplashActivity"
-=======
-            android:name="com.abel.mobilin.SplashActivity"
->>>>>>> 6a9a5b3 (first commit)
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,11 +23,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Landing -->
         <activity
-<<<<<<< HEAD
             android:name="com.abel.mobilin.Landing.WelcomeActivity"
             android:exported="false" />
 
+        <!-- Login -->
         <activity
             android:name="com.abel.mobilin.Login.LoginActivity"
             android:exported="false" />
@@ -46,27 +41,9 @@
             android:name="com.abel.mobilin.Login.ForgotPasswordActivity"
             android:exported="false" />
 
+        <!-- Main -->
         <activity
             android:name="com.abel.mobilin.MainActivity"
-=======
-            android:name="com.abel.mobilin.WelcomeActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.abel.mobilin.LoginActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.abel.mobilin.RegisterActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.abel.mobilin.ForgotPasswordActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.abel.mobilin.HomeActivity"
->>>>>>> 6a9a5b3 (first commit)
             android:exported="false" />
 
     </application>

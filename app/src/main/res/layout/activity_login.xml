@@ -85,11 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="8dp"
-<<<<<<< HEAD
-                android:text="@string/lupa_password"
-=======
                 android:text="Lupa Kata Sandi?"
->>>>>>> 6a9a5b3 (first commit)
                 android:textColorLink="@color/white"
                 android:textColor="@android:color/white" />
 
@@ -112,11 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-<<<<<<< HEAD
-                android:text="@string/daftar_akun"
-=======
                 android:text="Tidak punya akun? Daftar"
->>>>>>> 6a9a5b3 (first commit)
                 android:textColor="@android:color/white" />
 
         </LinearLayout>
