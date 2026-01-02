@@ -1,13 +1,25 @@
 package com.abel.mobilin.DatabaseAPI
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.google.firebase.firestore.PropertyName
 
-@Entity(tableName = "mobil_table")
 data class Mobil(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val namaMobil: String = "",
-    val merkMobil: String = "",
-    val hargaSewa: Int = 0,
-    val gambarUrl: String = ""
+    var id: String = "",
+
+    @get:PropertyName("Nama")
+    var nama: String? = null,
+
+    @get:PropertyName("Merk")
+    var merk: String? = null,
+
+    @get:PropertyName("Transmisi")
+    var transmisi: String? = null,
+
+    @get:PropertyName("Seat")
+    var seat: String? = null,
+
+    @get:PropertyName("Harga")
+    var harga: Int? = 0,
+
+    @get:PropertyName("Foto")
+    var foto: String? = null
 )
