@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BrandButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/bg_search_white</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+</resources>

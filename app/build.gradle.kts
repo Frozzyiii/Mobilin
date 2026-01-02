@@ -51,18 +51,15 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-<<<<<<< HEAD
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-=======
+
     // Firebase (Menggunakan BOM untuk manajemen versi)
     implementation(platform(libs.firebase.bom))
->>>>>>> 7db17a1 (fix error4)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore)
 
-<<<<<<< HEAD
     // Room
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
@@ -77,7 +74,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
-=======
     // Room (Versi diambil dari TOML)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
@@ -88,7 +84,6 @@ dependencies {
     kapt(libs.glide.compiler)
 
     // Testing
->>>>>>> 7db17a1 (fix error4)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

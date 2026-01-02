@@ -1,88 +1,59 @@
 [versions]
-<<<<<<< HEAD
+# -- Build Plugins (Mengambil versi terbaru/HEAD) --
 agp = "8.5.2"
 kotlin = "1.9.24"
+googleGmsGoogleServices = "4.4.2"
 
+# -- Android Core --
 coreKtx = "1.13.1"
-junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 
-googleGmsGoogleServices = "4.4.2"
-firebaseAuth = "23.0.0"
-firebaseDatabase = "21.0.0"
-=======
-# Plugin Versions
-agp = "8.2.2"
-kotlin = "1.9.22"
-googleServices = "4.4.1"
-
-# Android Core
-coreKtx = "1.12.0"
-appcompat = "1.6.1"
-material = "1.11.0"
-activity = "1.8.2"
-constraintlayout = "2.1.4"
-
-# Firebase (BOM Version mengatur versi library di bawahnya)
+# -- Firebase BOM (Mengatur semua versi Firebase) --
 firebaseBom = "32.7.0"
 
-# Room
+# -- Database Lokal & Gambar --
 room = "2.6.1"
-
-# Glide
 glide = "4.16.0"
 
-# Testing
+# -- Testing --
 junit = "4.13.2"
-androidxJunit = "1.1.5"
+junitVersion = "1.1.5"
 espressoCore = "3.5.1"
->>>>>>> 7db17a1 (fix error4)
 
 [libraries]
-# Android Core
+# -- Android Core --
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
-<<<<<<< HEAD
-firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
-firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
-=======
-# Firebase
+# -- Firebase (Menggunakan BOM) --
+# Dengan BOM, library di bawahnya TIDAK butuh "version.ref"
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
-firebase-database = { group = "com.google.firebase", name = "firebase-database" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
-# Note: ktx library untuk firestore sudah deprecated, disarankan pakai yang biasa, tapi ini tetap saya tambahkan sesuai request
-firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
+# Saya tetap simpan database (Realtime DB) jaga-jaga jika ada kode lama yang belum dihapus
+firebase-database = { group = "com.google.firebase", name = "firebase-database" }
 
-# Room
+# -- Room Database --
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
-# Glide
+# -- Glide (Gambar) --
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 
-# Testing
+# -- Testing --
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
->>>>>>> 7db17a1 (fix error4)
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-<<<<<<< HEAD
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
-=======
-google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
->>>>>>> 7db17a1 (fix error4)

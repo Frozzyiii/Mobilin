@@ -26,8 +26,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var mobilAdapter: MobilAdapter
-    private lateinit var listMaster: ArrayList<Mobil>
-    private lateinit var listDisplay: ArrayList<Mobil>
+    private lateinit var listMaster: ArrayList<Mobil> // Menyimpan semua data dari DB
+    private lateinit var listDisplay: ArrayList<Mobil> // Menyimpan data yang ditampilkan (hasil filter)
 
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
@@ -37,8 +37,8 @@ class HomeFragment : Fragment() {
     private var currentSearchText = ""
 
     // Warna Resource
-    private val colorActive = Color.parseColor("#0F4C81")
-    private val colorInactive = Color.parseColor("#FFFFFF")
+    private val colorActive = Color.parseColor("#0F4C81") // Biru Gelap
+    private val colorInactive = Color.parseColor("#FFFFFF") // Putih
     private val textActive = Color.WHITE
     private val textInactive = Color.BLACK
 
@@ -64,16 +64,14 @@ class HomeFragment : Fragment() {
         mobilAdapter = MobilAdapter(listDisplay)
         binding.rvMobilHome.adapter = mobilAdapter
 
-        // 3. PANGGIL FUNGSI LOAD DATA (User & Mobil)
-        loadUserProfile()      // <-- INI YANG BIKIN HEADER DINAMIS
-        getDataFromFirestore() // <-- INI UNTUK LIST MOBIL
+        // 3. Load Data
+        loadUserProfile()
+        getDataFromFirestore()
 
-        // 4. Setup Filter Buttons
-        binding.btnSemua.setOnClickListener { updateFilter("Semua", binding.btnSemua) }
-        binding.btnHonda.setOnClickListener { updateFilter("Honda", binding.btnHonda) }
-        binding.btnBMW.setOnClickListener { updateFilter("BMW", binding.btnBMW) }
+        // 4. Setup Filter Buttons (Menggunakan Helper Function)
+        setupBrandButtons()
 
-        // 5. Setup Search
+        // 5. Setup Search Listener
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
@@ -84,84 +82,58 @@ class HomeFragment : Fragment() {
         })
     }
 
-    // --- FUNGSI UNTUK HEADER DINAMIS ---
-    private fun loadUserProfile() {
-        val user = auth.currentUser
+    private fun setupBrandButtons() {
+        // Map tombol ke nama Brand
+        val buttonMap = mapOf(
+            binding.btnSemua to "Semua",
+            binding.btnHonda to "Honda",
+            binding.btnBMW to "BMW",
+            binding.btnMercedes to "Mercedes",
+            binding.btnMazda to "Mazda",
+            binding.btnSuzuki to "Suzuki",
+            binding.btnMitsubishi to "Mitsubishi",
+            binding.btnToyota to "Toyota"
+        )
 
-        if (user != null) {
-            // Opsi A: Ambil dari Auth (Nama & Foto Google/Email) - Lebih Cepat
-            val name = user.displayName ?: user.email
-            val photoUrl = user.photoUrl
-
-            binding.tvUsername.text = name
-
-            // Load Foto dan buat jadi bulat pakai Glide
-            Glide.with(this)
-                .load(photoUrl)
-                .placeholder(R.drawable.ic_launcher_background) // Gambar default saat loading
-                .circleCrop() // <--- INI PENGGANTI CircleImageView
-                .into(binding.imgProfile)
-
-            // Opsi B: Jika kamu simpan data lengkap di Firestore (Collection "Users")
-            // Gunakan ini jika Nama/Foto di Auth kosong atau custom
-            val userId = user.uid
-            db.collection("Users").document(userId).get()
-                .addOnSuccessListener { document ->
-                    if (document.exists()) {
-                        val dbName = document.getString("nama") // Sesuaikan field di DB kamu
-                        val dbFoto = document.getString("foto") // URL foto profil
-
-                        if (!dbName.isNullOrEmpty()) {
-                            binding.tvUsername.text = dbName
-                        }
-
-                        if (!dbFoto.isNullOrEmpty()) {
-                            Glide.with(this)
-                                .load(dbFoto)
-                                .placeholder(R.drawable.ic_launcher_background)
-                                .circleCrop() // Membulatkan gambar
-                                .into(binding.imgProfile)
-                        }
-                    }
-                }
-        } else {
-            binding.tvUsername.text = "Tamu"
+        for ((button, brandName) in buttonMap) {
+            button.setOnClickListener {
+                updateFilterUI(brandName, button, buttonMap.keys.toList())
+            }
         }
     }
 
-    // --- FUNGSI AMBIL DATA MOBIL ---
+    private fun updateFilterUI(selectedBrand: String, activeButton: Button, allButtons: List<Button>) {
+        currentBrandFilter = selectedBrand
+
+        // Reset semua tombol ke style inactive (Putih)
+        for (btn in allButtons) {
+            btn.backgroundTintList = ColorStateList.valueOf(colorInactive)
+            btn.setTextColor(textInactive)
+        }
+
+        // Set tombol yang diklik ke style active (Biru)
+        activeButton.backgroundTintList = ColorStateList.valueOf(colorActive)
+        activeButton.setTextColor(textActive)
+
+        applyCombinedFilter()
+    }
+
     private fun getDataFromFirestore() {
         db.collection("Mobil")
             .get()
             .addOnSuccessListener { result ->
                 listMaster.clear()
                 for (document in result) {
+                    // Convert document ke object Mobil
                     val mobil = document.toObject(Mobil::class.java)
-                    mobil.id = document.id
+                    mobil.id = document.id // simpan ID dokumen jika butuh
                     listMaster.add(mobil)
                 }
-                applyCombinedFilter()
+                applyCombinedFilter() // Tampilkan data awal
             }
             .addOnFailureListener { e ->
-                Log.e("HomeFragment", "Error load data", e)
+                Log.e("HomeFragment", "Error getting documents", e)
             }
-    }
-
-    private fun updateFilter(brand: String, activeButton: Button) {
-        currentBrandFilter = brand
-
-        // Reset Visual
-        val buttons = listOf(binding.btnSemua, binding.btnHonda, binding.btnBMW)
-        for (btn in buttons) {
-            btn.backgroundTintList = ColorStateList.valueOf(colorInactive)
-            btn.setTextColor(textInactive)
-        }
-
-        // Set Active
-        activeButton.backgroundTintList = ColorStateList.valueOf(colorActive)
-        activeButton.setTextColor(textActive)
-
-        applyCombinedFilter()
     }
 
     private fun applyCombinedFilter() {
@@ -169,20 +141,42 @@ class HomeFragment : Fragment() {
 
         for (item in listMaster) {
             val namaMobil = item.nama?.lowercase() ?: ""
-            val merkMobil = item.merk?.lowercase() ?: namaMobil
 
-            // Logic Filter
-            val matchBrand = if (currentBrandFilter == "Semua") true
-            else (merkMobil.contains(currentBrandFilter.lowercase()) || namaMobil.contains(currentBrandFilter.lowercase()))
+            // Logic Filter Brand:
+            // Karena di Firestore kamu "Nama": "Honda Civic", kita cek apakah string nama mengandung merk
+            val matchBrand = if (currentBrandFilter == "Semua") {
+                true
+            } else {
+                namaMobil.contains(currentBrandFilter.lowercase())
+            }
 
-            val matchSearch = if (currentSearchText.isEmpty()) true
-            else namaMobil.contains(currentSearchText)
+            // Logic Search:
+            val matchSearch = if (currentSearchText.isEmpty()) {
+                true
+            } else {
+                namaMobil.contains(currentSearchText)
+            }
 
+            // Jika lolos kedua filter, tambahkan ke list tampilan
             if (matchBrand && matchSearch) {
                 listDisplay.add(item)
             }
         }
         mobilAdapter.notifyDataSetChanged()
+    }
+
+    private fun loadUserProfile() {
+        val user = auth.currentUser
+        if (user != null) {
+            // Priority 1: Display Name dari Auth
+            binding.tvUsername.text = user.displayName ?: user.email
+
+            // Load Foto
+            Glide.with(this)
+                .load(user.photoUrl)
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(binding.imgProfile)
+        }
     }
 
     override fun onDestroyView() {
