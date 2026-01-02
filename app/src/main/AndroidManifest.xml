@@ -15,35 +15,31 @@
 
         <!-- Splash / Launcher -->
         <activity
-            android:name="com.abel.mobilin.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Landing -->
+        </activity> <!-- Landing -->
         <activity
-            android:name="com.abel.mobilin.WelcomeActivity"
+            android:name=".WelcomeActivity"
+            android:exported="false" /> <!-- Login -->
+        <activity
+            android:name=".LoginActivity"
             android:exported="false" />
-
-        <!-- Login -->
         <activity
-            android:name="com.abel.mobilin.LoginActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
-
         <activity
-            android:name="com.abel.mobilin.RegisterActivity"
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" /> <!-- Main -->
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
-
         <activity
-            android:name="com.abel.mobilin.ForgotPasswordActivity"
-            android:exported="false" />
-
-        <!-- Main -->
-        <activity
-            android:name="com.abel.mobilin.MainActivity"
+            android:name=".BookingActivity"
             android:exported="false" />
 
     </application>

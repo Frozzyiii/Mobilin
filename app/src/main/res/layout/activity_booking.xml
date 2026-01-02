@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- Card Mobil -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMobil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ImageView mobil -->
+            <ImageView
+                android:id="@+id/imgMobil"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_marginBottom="8dp"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvNamaMobil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Mobil"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                tools:text="Toyota Avanza" />
+
+            <TextView
+                android:id="@+id/tvHargaMobil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rp 0/Hari"
+                android:textSize="14sp"
+                android:textColor="#FF9800"
+                android:layout_marginTop="4dp"
+                tools:text="Rp 500.000/Hari"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Pilih Tanggal -->
+    <TextView
+        android:id="@+id/tvPilihTanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Tanggal Rental"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cardMobil"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Tanggal Ambil -->
+    <LinearLayout
+        android:id="@+id/layoutAmbil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/layoutKembali"
+        app:layout_constraintTop_toBottomOf="@id/tvPilihTanggal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Ambil"
+            android:textSize="14sp"/>
+
+        <Button
+            android:id="@+id/btnTanggalAmbil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih tanggal"
+            android:backgroundTint="#1F3C88"
+            android:textColor="#FFF"
+            tools:text="01/01/2026"/>
+    </LinearLayout>
+
+    <!-- Tanggal Kembali -->
+    <LinearLayout
+        android:id="@+id/layoutKembali"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toEndOf="@id/layoutAmbil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPilihTanggal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Kembali"
+            android:textSize="14sp"/>
+
+        <Button
+            android:id="@+id/btnTanggalKembali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih tanggal"
+            android:backgroundTint="#1F3C88"
+            android:textColor="#FFF"
+            tools:text="03/01/2026"/>
+    </LinearLayout>
+
+    <!-- Ringkasan Pemesanan -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardRingkasan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutAmbil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ringkasan Pemesanan"
+                android:textStyle="bold"
+                tools:text="Ringkasan Pemesanan"/>
+
+            <TextView
+                android:id="@+id/tvDurasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Durasi : - hari"
+                android:layout_marginTop="8dp"
+                tools:text="Durasi : 3 hari"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Harga"
+                android:layout_marginTop="12dp"
+                tools:text="Total Harga"/>
+
+            <TextView
+                android:id="@+id/tvTotalHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 0"
+                android:textStyle="bold"
+                android:textColor="#FF9800"
+                android:textSize="16sp"
+                tools:text="Rp 1.500.000"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Tombol Konfirmasi -->
+    <Button
+        android:id="@+id/btnKonfirmasi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Konfirmasi Pemesanan"
+        android:textColor="#FFF"
+        android:backgroundTint="#1F3C88"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

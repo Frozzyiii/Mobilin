@@ -14,13 +14,19 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <!-- BOTTOM NAV -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu"
+
         android:background="#0F466E"
-        app:itemPaddingBottom="10dp"/>
+
+        app:itemActiveIndicatorColor="#FFFFFF"
+
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="#FFFFFF"
+
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>

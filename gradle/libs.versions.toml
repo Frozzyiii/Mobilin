@@ -22,6 +22,7 @@ glide = "4.16.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
+activityVersion = "1.12.2"
 
 [libraries]
 # -- Android Core --
@@ -52,6 +53,7 @@ glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", versi
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activityVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
