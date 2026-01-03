@@ -1,6 +1,6 @@
 [versions]
 # -- Build Plugins (Mengambil versi terbaru/HEAD) --
-agp = "8.5.2"
+agp = "8.6.0"
 kotlin = "1.9.24"
 googleGmsGoogleServices = "4.4.2"
 

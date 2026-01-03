@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0F466E"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="Pembayaran"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/ivMenu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_more"
+                app:tint="#FFFFFF" />
+
+        </LinearLayout>
+
+        <!-- Progress Steps -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:cardBackgroundColor="#0F466E"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Pilih Metode"
+                    android:textColor="#0F466E"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:cardBackgroundColor="#CCCCCC"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Bayar"
+                    android:textColor="#999999"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Detail Rental -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivCarImage"
+                        android:layout_width="80dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvCarName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Toyota Avanza 2023"
+                            android:textColor="#333333"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCarType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="MPV • Manual"
+                            android:textColor="#666666"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvRentalDuration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="3 Hari (5 Jan - 8 Jan 2026)"
+                            android:textColor="#666666"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#EEEEEE" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Total Pembayaran"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDetailLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lihat Detail"
+                        android:textColor="#0F466E"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Rp 900.000"
+                    android:textColor="#0F466E"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Informasi Pembayaran -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_dialog_info"
+                        app:tint="#0F466E" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Informasi Penting"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="• Pembayaran harus dilakukan dalam 24 jam\n• Mobil akan dikonfirmasi setelah pembayaran terverifikasi\n• Tunjukkan bukti pembayaran saat pengambilan mobil"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Metode Pembayaran -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/baseline_account_balance_wallet_24"
+                        app:tint="#0F466E" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Pilih Metode Pembayaran"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Transfer Bank (Virtual Account)"
+                    android:textColor="#999999"
+                    android:textSize="11sp" />
+
+                <!-- Bank Options -->
+                    <RadioGroup
+                        android:id="@+id/rgBankOptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- BCA -->
+                        <RadioButton
+                            android:id="@+id/rbBCA"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:background="?attr/selectableItemBackground"
+                            android:buttonTint="#0F466E"
+                            android:text="BCA Virtual Account"
+                            android:textSize="14sp"
+                            android:textColor="#333333"
+                            android:drawableStart="@drawable/bca"
+                            android:drawablePadding="12dp"
+                            android:gravity="center_vertical"/>
+
+                        <!-- Mandiri -->
+                        <RadioButton
+                            android:id="@+id/rbMandiri"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:background="?attr/selectableItemBackground"
+                            android:buttonTint="#0F466E"
+                            android:text="Mandiri Virtual Account"
+                            android:textSize="14sp"
+                            android:textColor="#333333"
+                            android:drawableStart="@drawable/mandiri"
+                            android:drawablePadding="12dp"
+                            android:gravity="center_vertical"/>
+
+                        <!-- BNI -->
+                        <RadioButton
+                            android:id="@+id/rbBNI"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:background="?attr/selectableItemBackground"
+                            android:buttonTint="#0F466E"
+                            android:text="BNI Virtual Account"
+                            android:textSize="14sp"
+                            android:textColor="#333333"
+                            android:drawableStart="@drawable/bni"
+                            android:drawablePadding="12dp"
+                            android:gravity="center_vertical"/>
+
+                        <!-- BRI -->
+                        <RadioButton
+                            android:id="@+id/rbBRI"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:background="?attr/selectableItemBackground"
+                            android:buttonTint="#0F466E"
+                            android:text="BRI Virtual Account"
+                            android:textSize="14sp"
+                            android:textColor="#333333"
+                            android:drawableStart="@drawable/bri"
+                            android:drawablePadding="12dp"
+                            android:gravity="center_vertical"/>
+
+                    </RadioGroup>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Bottom Button -->
+        <Button
+            android:id="@+id/btnPayNow"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:backgroundTint="#0F466E"
+            android:text="Lanjutkan Pembayaran"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>

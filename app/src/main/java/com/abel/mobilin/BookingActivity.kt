@@ -1,6 +1,7 @@
 package com.abel.mobilin
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.abel.mobilin.databinding.ActivityBookingBinding
@@ -8,32 +9,45 @@ import com.bumptech.glide.Glide
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class BookingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBookingBinding
 
-    private var hargaMobilPerHari: Int = 0
+    private var hargaMobilPerHari = 0
     private var tanggalAmbil: Calendar? = null
     private var tanggalKembali: Calendar? = null
+    private var fotoMobil = ""
+    private var namaMobil = ""
+
+    // Formatter Rupiah (GLOBAL)
+    private val rupiahFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID")).apply {
+        maximumFractionDigits = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ambil data dari Intent
-        val namaMobil = intent.getStringExtra("namaMobil") ?: "Mobil"
+        ambilIntent()
+        setDataMobil()
+        setupTanggalPicker()
+        setupKonfirmasi()
+    }
+
+    // ================== INIT ==================
+
+    private fun ambilIntent() {
+        namaMobil = intent.getStringExtra("namaMobil") ?: "Mobil"
         hargaMobilPerHari = intent.getIntExtra("hargaMobil", 0)
-        val fotoMobil = intent.getStringExtra("fotoMobil") ?: ""
+        fotoMobil = intent.getStringExtra("fotoMobil") ?: ""
+    }
 
-        // Set data ke layout
+    private fun setDataMobil() {
         binding.tvNamaMobil.text = namaMobil
-
-        val localeID = Locale("id", "ID")
-        val numberFormat = NumberFormat.getCurrencyInstance(localeID)
-        numberFormat.maximumFractionDigits = 0
-        binding.tvHargaMobil.text = "${numberFormat.format(hargaMobilPerHari)}/Hari"
+        binding.tvHargaMobil.text = "${rupiahFormat.format(hargaMobilPerHari)}/Hari"
 
         Glide.with(this)
             .load(fotoMobil)
@@ -41,73 +55,95 @@ class BookingActivity : AppCompatActivity() {
             .error(R.drawable.ic_launcher_background)
             .centerCrop()
             .into(binding.imgMobil)
+    }
 
-        // Tombol Tanggal Ambil
+    // ================== DATE PICKER ==================
+
+    private fun setupTanggalPicker() {
         binding.btnTanggalAmbil.setOnClickListener {
-            showDatePicker { date, calendar ->
-                tanggalAmbil = calendar
-                binding.btnTanggalAmbil.text = date
+            showDatePicker {
+                tanggalAmbil = it
+                binding.btnTanggalAmbil.text = formatTanggal(it)
                 updateDurasiDanTotal()
             }
         }
 
-        // Tombol Tanggal Kembali
         binding.btnTanggalKembali.setOnClickListener {
-            showDatePicker { date, calendar ->
-                tanggalKembali = calendar
-                binding.btnTanggalKembali.text = date
+            showDatePicker {
+                tanggalKembali = it
+                binding.btnTanggalKembali.text = formatTanggal(it)
                 updateDurasiDanTotal()
             }
         }
+    }
 
-        // Tombol Konfirmasi
+    private fun showDatePicker(onSelected: (Calendar) -> Unit) {
+        val now = Calendar.getInstance()
+        DatePickerDialog(
+            this,
+            { _, y, m, d ->
+                val cal = Calendar.getInstance().apply { set(y, m, d) }
+                onSelected(cal)
+            },
+            now.get(Calendar.YEAR),
+            now.get(Calendar.MONTH),
+            now.get(Calendar.DAY_OF_MONTH)
+        ).apply {
+            datePicker.minDate = now.timeInMillis
+            show()
+        }
+    }
+
+    private fun formatTanggal(cal: Calendar): String {
+        return SimpleDateFormat("dd/MM/yyyy", Locale("id", "ID")).format(cal.time)
+    }
+
+    // ================== HITUNG ==================
+
+    private fun hitungDurasiHari(): Int {
+        if (tanggalAmbil == null || tanggalKembali == null) return 0
+        val diffMillis = tanggalKembali!!.timeInMillis - tanggalAmbil!!.timeInMillis
+        return TimeUnit.MILLISECONDS.toDays(diffMillis).toInt() + 1 // inclusive
+    }
+
+    private fun updateDurasiDanTotal() {
+        val durasi = hitungDurasiHari()
+
+        if (durasi <= 0) {
+            binding.tvDurasi.text = "Tanggal kembali harus setelah tanggal ambil"
+            binding.tvTotalHarga.text = rupiahFormat.format(0)
+            return
+        }
+
+        val totalHarga = hargaMobilPerHari * durasi
+        binding.tvDurasi.text = "Durasi: $durasi hari"
+        binding.tvTotalHarga.text = rupiahFormat.format(totalHarga)
+    }
+
+    // ================== KONFIRMASI ==================
+
+    private fun setupKonfirmasi() {
         binding.btnKonfirmasi.setOnClickListener {
-            if (tanggalAmbil == null || tanggalKembali == null) {
-                binding.tvDurasi.text = "Pilih tanggal dulu!"
+            val durasi = hitungDurasiHari()
+
+            if (durasi <= 0) {
+                binding.tvDurasi.text = "Pilih tanggal dengan benar!"
                 return@setOnClickListener
             }
 
-            binding.tvDurasi.text = "Booking berhasil!"
-        }
-    }
+            val totalHarga = hargaMobilPerHari * durasi
+            val rentalDate =
+                "${formatTanggal(tanggalAmbil!!)} - ${formatTanggal(tanggalKembali!!)}"
 
-    // Fungsi DatePicker dengan minimal date hari ini
-    private fun showDatePicker(onDateSelected: (String, Calendar) -> Unit) {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        val datePicker = DatePickerDialog(this, { _, y, m, d ->
-            val selectedCal = Calendar.getInstance()
-            selectedCal.set(y, m, d)
-            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale("id", "ID"))
-            onDateSelected(sdf.format(selectedCal.time), selectedCal)
-        }, year, month, day)
-
-        // Tidak bisa pilih tanggal sebelum hari ini
-        datePicker.datePicker.minDate = calendar.timeInMillis
-        datePicker.show()
-    }
-
-    // Update durasi & total harga
-    private fun updateDurasiDanTotal() {
-        if (tanggalAmbil != null && tanggalKembali != null) {
-            val diffMillis = tanggalKembali!!.timeInMillis - tanggalAmbil!!.timeInMillis
-            val diffHari = (diffMillis / (1000 * 60 * 60 * 24)).toInt() + 1
-
-            if (diffHari <= 0) {
-                binding.tvDurasi.text = "Tanggal kembali harus setelah ambil"
-                binding.tvTotalHarga.text = "Rp 0"
-                return
-            }
-
-            binding.tvDurasi.text = "Durasi: $diffHari hari"
-            val totalHarga = hargaMobilPerHari * diffHari
-            val localeID = Locale("id", "ID")
-            val numberFormat = NumberFormat.getCurrencyInstance(localeID)
-            numberFormat.maximumFractionDigits = 0
-            binding.tvTotalHarga.text = numberFormat.format(totalHarga)
+            startActivity(
+                Intent(this, PaymentDetailActivity::class.java).apply {
+                    putExtra("CAR_NAME", namaMobil)
+                    putExtra("CAR_IMAGE", fotoMobil)
+                    putExtra("RENTAL_DATE", rentalDate)
+                    putExtra("TOTAL_PRICE", rupiahFormat.format(totalHarga))
+                    putExtra("PRICE_PER_DAY", hargaMobilPerHari)
+                }
+            )
         }
     }
 }

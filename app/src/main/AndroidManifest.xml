@@ -42,6 +42,13 @@
             android:name=".BookingActivity"
             android:exported="false" />
 
+        <activity android:name=".PaymentDetailActivity" />
+
+        <activity
+            android:name=".PaymentSuccessActivity"
+            android:exported="false" />
+
+
     </application>
 
 </manifest>

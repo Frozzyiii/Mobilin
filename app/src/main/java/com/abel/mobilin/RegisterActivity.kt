@@ -63,6 +63,13 @@ class RegisterActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(emailText, passText)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+                        // Simpan username ke SharedPreferences
+                        val prefs = getSharedPreferences("user_pref", MODE_PRIVATE)
+                        prefs.edit()
+                            .putString("username", usernameText)
+                            .putString("email", emailText) // optional, bisa pakai FirebaseAuth juga
+                            .apply()
+
 
                         // KIRIM EMAIL VERIFIKASI
                         auth.currentUser?.sendEmailVerification()

@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.abel.mobilin"
-    compileSdk = 35
+    compileSdk = 35  // Update ke 35 (minimal requirement)
 
     defaultConfig {
         applicationId = "com.abel.mobilin"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34  // Bisa tetap 34, tidak perlu diubah
         versionCode = 1
         versionName = "1.0"
 
@@ -44,24 +44,21 @@ android {
 }
 
 dependencies {
-    // Android UI & Core
-    implementation(libs.androidx.core.ktx)
+    // Android UI & Core - gunakan versi yang kompatibel
+    implementation("androidx.core:core-ktx:1.13.1")  // Versi stabil untuk compileSdk 35
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
+    implementation("androidx.activity:activity-ktx:1.9.3")  // Versi stabil
     implementation(libs.androidx.constraintlayout)
+    implementation("com.google.android.material:material:1.11.0")
 
-    // Firebase
+    // Firebase - gunakan satu BOM saja
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-firestore")
 
-    // Firebase (Menggunakan BOM untuk manajemen versi)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.database)
-    implementation(libs.firebase.firestore)
-    implementation(libs.activity)
-
-    // Room
+    // Room - gunakan satu definisi saja
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
@@ -71,18 +68,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    // Glide
+    // Glide - gunakan satu definisi saja
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
-
-    // Room (Versi diambil dari TOML)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
-
-    // Glide (Versi diambil dari TOML)
-    implementation(libs.glide)
-    kapt(libs.glide.compiler)
 
     // Testing
     testImplementation(libs.junit)

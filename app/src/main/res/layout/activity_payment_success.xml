@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header FULL LAYAR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#0F466E"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:tint="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="Pembayaran Berhasil"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Status pembayaran -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#E8F5E9">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@android:drawable/ic_dialog_info"
+                    android:tint="#4CAF50"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pembayaran Berhasil!"
+                    android:textColor="#2E7D32"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terima kasih, pembayaran Anda telah berhasil dikonfirmasi."
+                    android:textColor="#555555"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Detail Mobil & Booking -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvTransactionId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TRX20260103123456"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvRentalDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 Jan - 8 Jan 2026"
+                    android:textColor="#777777"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <ImageView
+                    android:id="@+id/ivCarImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/tvCarName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Toyota Avanza 2023"
+                    android:textColor="#222222"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvCarType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MPV • Manual"
+                    android:textColor="#777777"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Pembayaran"
+                    android:textColor="#777777"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 954.500"
+                    android:textColor="#2E7D32"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvBookingCode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="BOOK-202601-ABC123"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCopyBooking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Salin"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="#0F466E"
+                        app:cornerRadius="6dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDownloadReceipt"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Download Bukti Pembayaran"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:backgroundTint="#0F466E"
+                android:layout_marginBottom="8dp"
+                app:cornerRadius="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackToHome"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Kembali ke Beranda"
+                android:textColor="#0F466E"
+                android:textSize="14sp"
+                android:backgroundTint="#FFFFFF"
+                app:strokeWidth="1dp"
+                app:strokeColor="#0F466E"
+                app:cornerRadius="8dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

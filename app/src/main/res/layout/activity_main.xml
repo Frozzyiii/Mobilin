@@ -21,8 +21,6 @@
 
         android:background="#0F466E"
 
-        app:itemActiveIndicatorColor="#FFFFFF"
-
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="#FFFFFF"
 

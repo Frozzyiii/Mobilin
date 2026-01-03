@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Gambar Mobil -->
+            <ImageView
+                android:id="@+id/ivCarImage"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="Car Image"
+                android:layout_marginEnd="16dp"/>
+
+            <!-- Info Mobil -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvCarName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Toyota Avanza 2023"
+                    android:textColor="#1A253D"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvCarType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MPV • Manual"
+                    android:textColor="#757575"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aktif"
+                    android:textColor="#4CAF50"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:padding="4dp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Detail -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRentalDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Jan - 8 Jan 2026"
+                android:textColor="#424242"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tvBookingCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BOOK-202601-ABC123"
+                android:textColor="#0F466E"
+                android:textSize="13sp"
+                android:fontFamily="monospace"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Pembayaran"
+                    android:textColor="#757575"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 954.500"
+                    android:textColor="#4CAF50"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btnDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail"
+                android:textColor="#0F466E"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:padding="8dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
